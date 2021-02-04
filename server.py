@@ -10,6 +10,7 @@ from environs import Env
 
 
 CHUNK_SIZE_IN_KB = 500
+DEFAULT_IMAGE_FOLDER = 'test_photos'
 
 
 async def archivate(request):
@@ -68,7 +69,7 @@ def get_service_settings():
 
     (args.logging or env.bool('LOGGING', False)) and logging.basicConfig(level=logging.DEBUG)
     latency = args.latency or float(env('LATENCY', 0.0))
-    images_root_folder = args.image_path or env('PHOTOS_ROOT_FOLDER', '')
+    images_root_folder = args.image_path or env('PHOTOS_ROOT_FOLDER', DEFAULT_IMAGE_FOLDER)
 
     return latency, images_root_folder
 
