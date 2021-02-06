@@ -42,6 +42,7 @@ async def archivate(request):
 
     except asyncio.CancelledError:
         logging.error(f'[{datetime.now()}] Download was interrupted')
+        raise
     finally:
         process.kill()
         await process.wait()
